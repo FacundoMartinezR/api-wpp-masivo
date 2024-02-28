@@ -37,7 +37,7 @@ const main = async () => {
                 const phone = item.phone;
                 const dateDay = item.dateDay;
                 const dateHour = item.dateHour;
-                const message = `Hola ${nombre}. Desde Google le recordamos su consulta de fisioterapia para el día: ${dateDay} a la hora: ${dateHour}. Ante cualquier inconveniente de no asistir recuerde llamar al 2347 2347. Muchas gracias!`;
+                const message = `Hola ${nombre}. Desde Centro Médico Integral le recordamos su consulta de fisioterapia para el día: ${dateDay} a la hora: ${dateHour}. Ante cualquier inconveniente de no asistir recuerde llamar al 2347 2347. Muchas gracias!`;
                 await bot.sendMessage(phone, message, {});
                 consultasManana = true;
             }
