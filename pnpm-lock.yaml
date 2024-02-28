@@ -14,6 +14,9 @@ dependencies:
   '@img/sharp-win32-x64':
     specifier: ^0.33.2
     version: 0.33.2
+  date-fns:
+    specifier: ^3.3.1
+    version: 3.3.1
   sharp:
     specifier: ^0.33.2
     version: 0.33.2
@@ -688,6 +691,10 @@ packages:
 
   /curve25519-js@0.0.4:
     resolution: {integrity: sha512-axn2UMEnkhyDUPWOwVKBMVIzSQy2ejH2xRGy1wq81dqRwApXfIzfbE3hIX0ZRFBIihf/KDqK158DLwESu4AK1w==}
+    dev: false
+
+  /date-fns@3.3.1:
+    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
     dev: false
 
   /debug@4.3.4:
