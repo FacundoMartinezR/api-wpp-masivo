@@ -2,8 +2,6 @@ import {createBot, createFlow, MemoryDB, createProvider, addKeyword} from '@bot-
 import {BaileysProvider, handleCtx} from '@bot-whatsapp/provider-baileys'
 import {parse} from 'date-fns'
 
-let dataMake;
-
 const main = async () => {
 
     const urlMake = "https://hook.us1.make.com/opxjv6941lnu3k9j9iqwqo1x2e78bi0g"
@@ -11,20 +9,21 @@ const main = async () => {
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0) //Omite la hora actual para comparar sola las fechas
 
-    try {
-        const response = await fetch(urlMake, {
-            method: 'GET'
-        })
-        dataMake = await response.json();
-        }
-    catch (error) {
-        console.error(error);
-    }
-
     provider.initHttpServer(3002)
 
     provider.http?.server.post('/send-message', handleCtx(async(bot, req, res) => {
         let consultasManana = false;
+        let dataMake;
+
+        try {
+            const response = await fetch(urlMake, {
+                method: 'GET'
+            })
+            dataMake = await response.json();
+            }
+        catch (error) {
+            console.error(error);
+        }    
 
         for (const item of dataMake) {
             const fechaConsulta = parse(item.dateDay, 'dd/MM/yyyy', new Date());
