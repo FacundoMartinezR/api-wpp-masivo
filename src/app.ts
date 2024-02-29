@@ -43,11 +43,29 @@ const main = async () => {
         }
 
         if (consultasManana) {
-            res.end("Successfully");
+            res.end("Se ha enviado satisfactoriamente el recordatorio");
         } else {
             res.end("No hay consultas para mañana");
         }
     }));
-}
+    // Espera un momento para asegurar que el servidor está listo
+    setTimeout(() => {
+        // Realiza la solicitud POST a /send-message
+        fetch('http://149.50.134.75:3002/send-message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({}) // Ajusta el cuerpo según sea necesario
+        })
+        .then(response => response.text()) // Ajusta según el tipo de respuesta esperada
+        .then(result => {
+            console.log(result);
+            // Finaliza el proceso después de procesar la respuesta
+            process.exit(0);})
+            .catch(error => {
+                console.error('Error al enviar mensaje:', error);
+                // Finaliza el proceso con un código de error
+                process.exit(1);
+            });    }, 1000); // Ajusta este tiempo según sea necesario para esperar a que el servidor esté listo
+};
 
 main()
